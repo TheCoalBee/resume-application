@@ -1,16 +1,11 @@
 import { useState } from 'react'
 
-function EducationalExperience({hasSchool, setHasSchool, schoolName, setSchoolName, degree, setDegree, schoolStartDate, setSchoolStartDate, schoolEndDate, setSchoolEndDate, schoolLocation, setSchoolLocation}) {
+function EducationalExperience({education, setEducation}) {
 
     const [showForm, setShowForm] = useState(false);
 
     const toggleForm = () => {
-        setHasSchool(!hasSchool);
-        setSchoolName('');
-        setDegree('');
-        setSchoolStartDate('');
-        setSchoolEndDate('');
-        setSchoolLocation('');
+        setEducation({hasSchool: !education.hasSchool, name: "", degree: "", startDate: "", endDate: "", location: ""})
         setShowForm(!showForm);
     }
 
@@ -26,40 +21,40 @@ function EducationalExperience({hasSchool, setHasSchool, schoolName, setSchoolNa
                     <input 
                         id="school-name"
                         type="text"
-                        value={schoolName}
-                        onChange={(e) => setSchoolName(e.target.value)}
+                        value={education.name}
+                        onChange={(e) => setEducation({...education, name: e.target.value})}
                     /></label>
     
                     <label htmlFor="degree">Degree:
                     <input 
                         id="degree"
                         type="text"
-                        value={degree}
-                        onChange={(e) => setDegree(e.target.value)}
+                        value={education.degree}
+                        onChange={(e) => setEducation({...education, degree: e.target.value})}
                     /></label>
     
                     <label htmlFor="school-start-date">Start date:
                     <input 
                         id="school-start-date"
                         type="text"
-                        value={schoolStartDate}
-                        onChange={(e) => setSchoolStartDate(e.target.value)}
+                        value={education.startDate}
+                        onChange={(e) => setEducation({...education, startDate: e.target.value})}
                     /></label>
     
                     <label htmlFor="school-end-date">End date:
                     <input 
                         id="school-end-date"
                         type="text"
-                        value={schoolEndDate}
-                        onChange={(e) => setSchoolEndDate(e.target.value)}
+                        value={education.endDate}
+                        onChange={(e) => setEducation({...education, endDate: e.target.value})}
                     /></label>
     
                     <label htmlFor="school-location">Location:
                     <input 
                         id="school-location"
                         type="text"
-                        value={schoolLocation}
-                        onChange={(e) => setSchoolLocation(e.target.value)}
+                        value={education.location}
+                        onChange={(e) => setEducation({...education, location: e.target.value})}
                     /></label>
                     </>
                 )}

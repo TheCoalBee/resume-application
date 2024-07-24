@@ -1,38 +1,38 @@
-import { useState } from 'react'
-
-function Resume(props) {
+function Resume({person, education, practical}) {
   return (
     <>
         <div className="resume" >
 
             <div id="personal-information">
-              <h1>{props.fullName}</h1>
-              <p>{props.address}</p>
-              <p>{props.phone}</p>
-              <p>{props.email}</p>
+              <h1>{person.firstName + " " + person.lastName}</h1>
+              <p>{person.address}</p>
+              <p>{person.phone}</p>
+              <p>{person.email}</p>
             </div>
-
-            <div id="educational-experience">
-              <h2>{(props.hasSchool) ? "Educational Experience" : ""}</h2>
-              <h3>{props.schoolName}
-                <p>{props.schoolStartDate} {(props.schoolStartDate && props.schoolEndDate) ? '-' : ''} {props.schoolEndDate}</p>
+            
+            {education.hasSchool && (
+              <div id="educational-experience">
+              <h2>{(education.hasSchool) ? "Educational Experience" : ""}</h2>
+              <h3>{education.name}
+                <p>{education.startDate} {(education.startDate && education.endDate) ? '-' : ''} {education.endDate}</p>
               </h3>
-              <h4>{props.degree}</h4>
-              <p>{props.schoolLocation}</p>
+              <h4>{education.degree}</h4>
+              <p>{education.location}</p>
             </div>
+            )}
 
-            <div id="practical-experience">
-              <h2>{(props.hasCompany) ? "Practical Experience" : ""}</h2>
+            {practical.hasCompany && (
+              <div id="practical-experience">
+              <h2>{(practical.hasCompany) ? "Practical Experience" : ""}</h2>
 
-              <h3>{props.companyName}
-                <p>{props.companyStartDate} {(props.companyStartDate && props.companyEndDate) ? '-' : ''} {props.companyEndDate}</p>
+              <h3>{practical.name}
+                <p>{practical.startDate} {(practical.startDate && practical.endDate) ? '-' : ''} {practical.endDate}</p>
               </h3>
-              <h4>{props.position}</h4>
-              <p>{props.companyLocation}</p>
-              <p>{props.positionDescription}</p>
+              <h4>{practical.position}</h4>
+              <p>{practical.location}</p>
+              <p>{practical.desc}</p>
             </div>
-
-            {/*Conditional, if there are experiences to show, then show the header, if there are no experiences to show, then dont show header for both relevant and educational experience*/}
+            )}
         </div>
     </>
   )

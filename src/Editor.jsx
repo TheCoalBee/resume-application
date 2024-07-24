@@ -5,102 +5,63 @@ import PersonalInformation from './PersonalInformation';
 import EducationalExperience from './EducationalExperience';
 import PracticalExperience from './PracticalExperience';
 
-function Editor() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const fullName = firstName + " " + lastName;
-  const [address, setAddress] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
+function Person() {
+  this.firstName = "";
+  this.lastName = "";
+  this.address;
+  this.phone;
+  this.email;
+}
 
-  const [hasSchool, setHasSchool] = useState(false);
-  const [schoolName, setSchoolName] = useState('');
-  const [degree, setDegree] = useState('');
-  const [schoolStartDate, setSchoolStartDate] = useState('');
-  const [schoolEndDate, setSchoolEndDate] = useState('');
-  const [schoolLocation, setSchoolLocation] = useState('');
+function Education() {
+  this.hasSchool = false;
+  this.name;
+  this.degree;
+  this.startDate;
+  this.endDate;
+  this.location;
+}
 
-  const [hasCompany, setHasCompany] = useState(false);
-  const [companyName, setCompanyName] = useState('');
-  const [position, setPosition] = useState('');
-  const [companyStartDate, setCompanyStartDate] = useState('');
-  const [companyEndDate, setCompanyEndDate] = useState('');
-  const [companyLocation, setCompanyLocation] = useState('');
-  const [positionDescription, setPositionDescription] = useState('');
+function Practical() {
+  this.hasCompany = false;
+  this.name;
+  this.position;
+  this.startDate;
+  this.endDate;
+  this.location;
+  this.desc;
+}
+
+export default function Editor() {
+  const [person, setPerson] = useState(new Person());
+  const [education, setEducation] = useState(new Education());
+  const [practical, setPractical] = useState(new Practical());
     
   return (
     <>
       <div className="editor">
 
-        <PersonalInformation 
-          firstName={firstName}
-          setFirstName={setFirstName}
-          lastName={lastName}
-          setLastName={setLastName}
-          address={address}
-          setAddress={setAddress}
-          phone={phone}
-          setPhone={setPhone}
-          email={email}
-          setEmail={setEmail}
+        <PersonalInformation
+          person={person}
+          setPerson={setPerson}
         />
 
         <EducationalExperience 
-          hasSchool={hasSchool}
-          setHasSchool={setHasSchool}
-          schoolName={schoolName}
-          setSchoolName={setSchoolName}
-          degree={degree}
-          setDegree={setDegree}
-          schoolStartDate={schoolStartDate}
-          setSchoolStartDate={setSchoolStartDate}
-          schoolEndDate={schoolEndDate}
-          setSchoolEndDate={setSchoolEndDate}
-          schoolLocation={schoolLocation}
-          setSchoolLocation={setSchoolLocation}
+          education={education}
+          setEducation={setEducation}
         />
 
         <PracticalExperience 
-          hasCompany={hasCompany}
-          setHasCompany={setHasCompany}
-          companyName={companyName}
-          setCompanyName={setCompanyName}
-          position={position}
-          setPosition={setPosition}
-          companyStartDate={companyStartDate}
-          setCompanyStartDate={setCompanyStartDate}
-          companyEndDate={companyEndDate}
-          setCompanyEndDate={setCompanyEndDate}
-          companyLocation={companyLocation}
-          setCompanyLocation={setCompanyLocation}
-          positionDescription={positionDescription}
-          setPositionDescription={setPositionDescription}
+          practical={practical}
+          setPractical={setPractical}
         />
-        
       </div>
+
       <Resume 
-        fullName={fullName}
-        address={address}
-        phone={phone}
-        email={email}
-
-        hasSchool={hasSchool}
-        schoolName={schoolName}
-        degree={degree}
-        schoolStartDate={schoolStartDate}
-        schoolEndDate={schoolEndDate}
-        schoolLocation={schoolLocation}
-
-        hasCompany={hasCompany}
-        companyName={companyName}
-        position={position}
-        companyStartDate={companyStartDate}
-        companyEndDate={companyEndDate}
-        companyLocation={companyLocation}
-        positionDescription={positionDescription}
+        person={person}
+        education={education}
+        practical={practical}
       />
     </>
   )
 }
-
-export default Editor

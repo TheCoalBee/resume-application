@@ -1,17 +1,11 @@
 import { useState } from 'react'
 
-function PracticalExperience({hasCompany, setHasCompany, companyName, setCompanyName, position, setPosition, companyStartDate, setCompanyStartDate, companyEndDate, setCompanyEndDate, companyLocation, setCompanyLocation, positionDescription, setPositionDescription}) {
+function PracticalExperience({practical, setPractical}) {
 
     const [showForm, setShowForm] = useState(false);
 
     const toggleForm = () => {
-        setHasCompany(!hasCompany);
-        setCompanyName('');
-        setPosition('');
-        setCompanyStartDate('');
-        setCompanyEndDate('');
-        setCompanyLocation('');
-        setPositionDescription('');
+        setPractical({hasCompany: !practical.hasCompany, name: "", position: "", startDate: "", endDate: "", location: "", desc: ""})
         setShowForm(!showForm);
     }
 
@@ -27,48 +21,48 @@ function PracticalExperience({hasCompany, setHasCompany, companyName, setCompany
                     <input 
                         id="company-name"
                         type="text"
-                        value={companyName}
-                        onChange={(e) => setCompanyName(e.target.value)}
+                        value={practical.name}
+                        onChange={(e) => setPractical({...practical, name: e.target.value})}
                     /></label>
     
                     <label htmlFor="position">Position:
                     <input 
                         id="position"
                         type="text"
-                        value={position}
-                        onChange={(e) => setPosition(e.target.value)}
+                        value={practical.position}
+                        onChange={(e) => setPractical({...practical, position: e.target.value})}
                     /></label>
     
                     <label htmlFor="company-start-date">Start date:
                     <input 
                         id="company-start-date"
                         type="text"
-                        value={companyStartDate}
-                        onChange={(e) => setCompanyStartDate(e.target.value)}
+                        value={practical.startDate}
+                        onChange={(e) => setPractical({...practical, startDate: e.target.value})}
                     /></label>
     
                     <label htmlFor="company-end-date">End date:
                     <input 
                         id="company-end-date"
                         type="text"
-                        value={companyEndDate}
-                        onChange={(e) => setCompanyEndDate(e.target.value)}
+                        value={practical.endDate}
+                        onChange={(e) => setPractical({...practical, endDate: e.target.value})}
                     /></label>
     
                     <label htmlFor="company-location">Location:
                     <input 
                         id="company-location"
                         type="text"
-                        value={companyLocation}
-                        onChange={(e) => setCompanyLocation(e.target.value)}
+                        value={practical.location}
+                        onChange={(e) => setPractical({...practical, location: e.target.value})}
                     /></label>
 
                     <label htmlFor="position-description">Position description:
                     <input 
                         id="position-description"
                         type="text"
-                        value={positionDescription}
-                        onChange={(e) => setPositionDescription(e.target.value)}
+                        value={practical.desc}
+                        onChange={(e) => setPractical({...practical, desc: e.target.value})}
                     /></label>
                     </>
                 )}
